@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GestionCoursesXamarin.views.GestionCoureur">
+    <ContentPage.Content>
+        <StackLayout>
+            <Entry Text="{Binding Coureur.Prenom}" Placeholder="Prénom"/>
+            <Entry Text="{Binding Coureur.Nom}" Placeholder="Nom"/>
+            <Entry Text="{Binding Coureur.Age}" Placeholder="Age"/>
+            <Entry Text="{Binding Coureur.Sexe}" Placeholder="Sexe"/>
+            <Button Text="Valider" Command="{Binding ValiderCoureur}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

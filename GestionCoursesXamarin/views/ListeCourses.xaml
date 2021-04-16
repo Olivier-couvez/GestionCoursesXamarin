@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GestionCoursesXamarin.views.ListeCourses">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="600"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Text="Gestion de Courses" FontSize="32" TextColor="Beige" Grid.Column="0"/>
+            <Button Text="Gestion Coureurs" FontFamily = "Lobster" FontSize="24" TextColor="Beige" Grid.Column="1" Command="{Binding AddCoureur}"/>
+            <Button Text="Inscriptions" FontFamily = "Lobster" FontSize="24" TextColor="Beige" Grid.Column="2" Command="{Binding AddInscript}"/>
+        </Grid>
+        <ListView x:Name="ListeDesCourses" Grid.Row="1"
+              BackgroundColor="White"
+              HasUnevenRows="True"
+            ItemsSource="{Binding Courses}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell Height ="80">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Label Text="{Binding Nom}" FontFamily = "Lobster" FontSize="24" TextColor="Blue" Grid.Row="0"/>
+                            <Grid Grid.Row="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Text="{Binding Lieu , StringFormat='La course se situe à : {0}'}" FontAttributes="Bold" FontSize="18" FontFamily="G" TextColor="Black" Grid.Column="0"/>
+                                <Label Text="{Binding Distance , StringFormat='La distance est de : {0:F3} Km'}" FontSize="15" TextColor="Black" Grid.Column="1">
+                                    <Label.FontFamily>
+                                        <OnPlatform x:TypeArguments="x:String">
+                                            <On Platform="iOS" Value="MarkerFelt-Thin" />
+                                            <On Platform="Android" Value="Lobster-Regular" />
+                                            <On Platform="UWP" Value="ArimaMadurai-Black" />
+                                        </OnPlatform>
+                                    </Label.FontFamily>
+                                </Label>
+                            </Grid>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</ContentPage>
