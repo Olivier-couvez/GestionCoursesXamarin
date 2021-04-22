@@ -4,21 +4,21 @@
              x:Class="GestionCoursesXamarin.views.ListeCourses">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
+            <RowDefinition Height="40"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0">
+        <Grid Grid.Row="0" BackgroundColor="Beige">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="600"/>
+                <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Label Text="Gestion de Courses" FontSize="32" TextColor="Beige" Grid.Column="0"/>
-            <Button Text="Gestion Coureurs" FontFamily = "Lobster" FontSize="24" TextColor="Beige" Grid.Column="1" Command="{Binding AddCoureur}"/>
-            <Button Text="Inscriptions" FontFamily = "Lobster" FontSize="24" TextColor="Beige" Grid.Column="2" Command="{Binding AddInscript}"/>
+            <Label Text="Gestion de Courses" Margin="0,0,0,0" Padding="0,0,0,0" FontFamily = "Lobster" FontSize="36" VerticalOptions="Center" BackgroundColor="Beige" TextColor="Navy" Grid.Column="0"/>
+            <Button Text="Coureurs" FontFamily = "Lobster" FontSize="24" VerticalOptions="Center" BackgroundColor="Beige" TextColor="Navy" Grid.Column="1" Command="{Binding AddCoureur}"/>
+            <Button Text="Inscriptions" FontFamily = "Lobster" FontSize="24" VerticalOptions="Center" BackgroundColor="Beige" TextColor="Navy" Grid.Column="2" Command="{Binding AddInscript}"/>
         </Grid>
         <ListView x:Name="ListeDesCourses" Grid.Row="1"
-              BackgroundColor="White"
+              BackgroundColor="Beige"
               HasUnevenRows="True"
             ItemsSource="{Binding Courses}">
             <ListView.ItemTemplate>

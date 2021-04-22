@@ -35,8 +35,7 @@ namespace GestionCoursesXamarin.ViewModels
 
             if(!string.IsNullOrEmpty(Coureur.Prenom))
             {
-                // Ok !!!
-                //Navigation.PopAsync(new ListeCourses());
+                Navigation.PopModalAsync();
             }
         }
     }
