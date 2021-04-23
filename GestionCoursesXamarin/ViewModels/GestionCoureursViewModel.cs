@@ -14,6 +14,7 @@ namespace GestionCoursesXamarin.ViewModels
         public Coureur Coureur { get => _coureur; set { _coureur = value; OnPropertyChanged(); } }
 
         public Command ValiderCoureur { get; set; }
+        public Command AnnulerCoureur { get; set; }
 
         public INavigation Navigation { get; set; }
 
@@ -21,10 +22,13 @@ namespace GestionCoursesXamarin.ViewModels
 
         public GestionCoureursViewModel(INavigation navigation)
         {
+ 
+
             if (Coureur ==  null)
             {
                 Coureur = new Coureur();
                 ValiderCoureur = new Command(ValiderCoureurCommand);
+                AnnulerCoureur = new Command(AnnulerCoureurCommand);
                 Navigation = navigation;
             }
         }
@@ -33,10 +37,16 @@ namespace GestionCoursesXamarin.ViewModels
         {
             // test
 
-            if(!string.IsNullOrEmpty(Coureur.Prenom))
+            if(!string.IsNullOrEmpty(Coureur.Prenom) || !string.IsNullOrEmpty(Coureur.Nom) || !string.IsNullOrEmpty(Coureur.Sexe) || !string.IsNullOrEmpty(Coureur.Age.ToString()))
             {
+                App.ListeCoureurs.Add(Coureur);
+
                 Navigation.PopModalAsync();
             }
+        }
+        private void AnnulerCoureurCommand()
+        {
+                Navigation.PopModalAsync();
         }
     }
 }

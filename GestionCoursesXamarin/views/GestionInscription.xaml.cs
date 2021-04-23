@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GestionCoursesXamarin.Models;
+using GestionCoursesXamarin.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,9 +14,19 @@ namespace GestionCoursesXamarin.views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class GestionInscription : ContentPage
     {
-        public GestionInscription()
+        int numCourses;
+        public GestionInscription(ItemTappedEventArgs e)
         {
             InitializeComponent();
+            BindingContext = new GestionInscriptionViewModel(Navigation);
+            ListeInscriptions.ItemsSource = App.ListeCoureurs;
+            var selecteditem = (Course)e.Item;
+            numCourses = selecteditem.Num;
+        }
+
+        private void ListeInscriptions_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            ((GestionInscriptionViewModel) BindingContext).MajDonnees(e, numCourses);
         }
     }
 }
