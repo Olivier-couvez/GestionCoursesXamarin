@@ -5,6 +5,7 @@ using Xamarin.Forms;
 
 namespace GestionCoursesXamarin.Models
 {
+    [Serializable]
     public class Course : BindableObject
     {
         private int _num = 0;

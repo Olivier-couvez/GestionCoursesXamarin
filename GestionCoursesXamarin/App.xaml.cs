@@ -13,6 +13,10 @@ namespace GestionCoursesXamarin
         public static List<Course> ListeCourses { get; set; }
         public static List<Coureur> ListeCoureurs { get; set; }
         public static List<Inscription> ListeInscription { get; set; }
+
+        EnregListeCoureurs sauvegardeC;
+        EnregListeCourses sauvegardeCo;
+        EnregListeInscrit sauvegardeI;
         public App()
         {
             InitializeComponent();
@@ -30,8 +34,14 @@ namespace GestionCoursesXamarin
                 ListeInscription = new List<Inscription>();
             }
 
-            InitListeCourse();
-            InitListeCoureur();
+
+            
+
+            // Recup données serialisé
+
+            InitListes();
+
+
 
             MainPage = new ListeCourses();
         }
@@ -55,12 +65,50 @@ namespace GestionCoursesXamarin
             ListeCoureurs.Add(new Coureur { Nom = "Delarre", Prenom = "Alexis", Age = 25, Sexe = "1" });
         }
 
+        public void InitListes()
+        {
+            // lecture fichier pour récup des informations enregistrer sur les rovers
+
+            sauvegardeC = new EnregListeCoureurs();
+            if (sauvegardeC.TestExistenceFichier() == true)
+            {
+                ListeCoureurs = sauvegardeC.recuperationListe(); // si une sauvegarde existe on la récupère
+            }
+            else
+            {
+                InitListeCoureur();
+            }
+
+            sauvegardeCo = new EnregListeCourses();
+            if (sauvegardeCo.TestExistenceFichier() == true)
+            {
+                ListeCourses = sauvegardeCo.recuperationListe(); // si une sauvegarde existe on la récupère
+            }
+            else
+            {
+                InitListeCourse();
+            }
+
+            sauvegardeI = new EnregListeInscrit();
+            if (sauvegardeI.TestExistenceFichier() == true)
+            {
+                ListeInscription = sauvegardeI.recuperationListe(); // si une sauvegarde existe on la récupère
+            }
+            else
+            {
+                InitListeCourse();
+            }
+        }
+
         protected override void OnStart()
         {
         }
 
         protected override void OnSleep()
         {
+            sauvegardeC.sauveListe(ListeCoureurs);
+            sauvegardeCo.sauveListe(ListeCourses);
+            sauvegardeI.sauveListe(ListeInscription);
         }
 
         protected override void OnResume()

@@ -27,8 +27,8 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <Button Text="Valider" BackgroundColor="Black" Command="{Binding ValiderCourse}" Grid.Column="0"/>
-                    <Button Text="Annuler" BackgroundColor="Black" Command="{Binding AnnulerCourse}" Grid.Column="1"/>
+                    <Button Text="Valider" BackgroundColor="PowderBlue" Command="{Binding ValiderCourse}" Grid.Column="0"/>
+                    <Button Text="Annuler" BackgroundColor="PowderBlue" Command="{Binding AnnulerCourse}" Grid.Column="1"/>
                 </Grid>
 
             </Grid>

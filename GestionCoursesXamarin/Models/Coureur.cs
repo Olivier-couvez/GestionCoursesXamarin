@@ -5,6 +5,7 @@ using Xamarin.Forms;
 
 namespace GestionCoursesXamarin.Models
 {
+    [Serializable]
     public class Coureur : BindableObject
     {
         private int _num = 0;
@@ -13,19 +14,21 @@ namespace GestionCoursesXamarin.Models
         private int _age;
         private string _sexe;
         private static int _nbCoureur;
+        private bool _einscrit;
         
 
         public Coureur()
         {
             Num = NbCoureur++;
         }
-        public Coureur(int num, string nom, string prenom,int age, string sexe) : base()
+        public Coureur(int num, string nom, string prenom,int age, string sexe, bool einscrit = false) : base()
         {
             _num = num;
             _nom = nom;
             _prenom = prenom;
             _age = age;
             _sexe = sexe;
+            _einscrit = einscrit;
         }
 
         public static int NbCoureur { get => _nbCoureur; set { _nbCoureur = value; } }
@@ -34,6 +37,7 @@ namespace GestionCoursesXamarin.Models
         public string Prenom { get => _prenom; set { _prenom = value; OnPropertyChanged(); } }
         public int Age { get => _age; set { _age = value; OnPropertyChanged(); } }
         public string Sexe { get => _sexe; set { _sexe = value; OnPropertyChanged(); } }
+        public bool Einscrit { get => _einscrit; set { _einscrit = value; OnPropertyChanged(); } }
 
 
     }
